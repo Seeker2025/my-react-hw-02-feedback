@@ -1,5 +1,12 @@
+import { CafeStatistics } from "./CafeStatistics/CafeStatistics";
+
 export const App = () => {
   return (
+    <>
+    <h1>Cafe Expresso</h1>
+
+    <CafeStatistics/>
+
     <div
       style={{
         height: '100vh',
@@ -12,5 +19,7 @@ export const App = () => {
     >
       React homework template
     </div>
+    </>
   );
 };
+
