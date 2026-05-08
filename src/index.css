@@ -23,9 +23,5 @@ code {
   background-color: rgb(14, 142, 255);
   border-radius: 4px;
   border: none;
-} */
-
-button:not(:first-child){
-  /* background-color: rgb(255, 122, 14); */
-  margin-left: 6px;
-}
+} 
+*/
