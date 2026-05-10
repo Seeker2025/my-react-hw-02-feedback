@@ -17,6 +17,8 @@ export const ButtonBlock = styled.div `
 export const StatisticsComp = styled.div`
   
    border: 1px solid black;
+   width: 500px;
+   padding: 5px 15px;
 
    p{
     color: #000000;
