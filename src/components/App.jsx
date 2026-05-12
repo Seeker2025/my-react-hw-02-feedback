@@ -12,14 +12,16 @@ export class App extends Component {
             }
 
    handleBtn = e => {
-    const type = (e.target.textContent).toLowerCase();
+    const type = (e.target.textContent);
        
     this.setState(prevState => {
       return {
         [type]: prevState[type] + 1,
       };
     });
-  };          
+  };     
+  
+  keys = Object.keys(this.state);
    
   countTotalFeedback = () =>{
       return Object.values(this.state).reduce((acc, itm)=>(acc += itm), 0);
@@ -36,22 +38,20 @@ export class App extends Component {
     const persent = this.countPositiveFeedbackPercentage().toFixed();
   return (
 
- 
-    <>
-    <h1>Cafe Expresso</h1>
+        <>
+                  <h1>Cafe Expresso</h1>
 
-    <CafeStatistics
-      good = {this.state.good }
-      neutral = {this.state.neutral}
-      bad = {this.state.bad}
-      handle = {this.handleBtn}
-      total = {total}
-      persent = {persent}
-      
-    />
-
-    
-    </>
+                  <CafeStatistics
+                    good = {this.state.good }
+                    neutral = {this.state.neutral}
+                    bad = {this.state.bad}
+                    handle = {this.handleBtn}
+                    total = {total}
+                    persent = {persent}
+                    option={this.keys}
+                    
+                  />
+        </>
   )}
 };
 

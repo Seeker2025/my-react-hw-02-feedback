@@ -1,5 +1,8 @@
-import { Component } from "react"
-import { StatisticsComp, ButtonBlock } from './CafeStatistics.styled';
+// import { Component } from "react"
+import { StatisticsComp } from './CafeStatistics.styled';
+import { FeedbackOptions } from '../FeedbackOptions/FeedbackOptions';
+import { Section } from '../Section/Section';
+import { Notification } from '../Notification/Notification';
 
 import { Statistics } from '../Statistics/Statistics';
 
@@ -11,6 +14,7 @@ export const CafeStatistics = ({
     total,
     persent,
     handle,
+    option
     
     }) => {
     
@@ -18,21 +22,24 @@ export const CafeStatistics = ({
  
         return (
             <StatisticsComp>
-                <h2>Please leave feedback</h2>
-                <ButtonBlock>
-                <button type="button" onClick={handle}>Good</button>
-                <button type="button" onClick={handle}>Neutral</button>
-                <button type="button" onClick={handle}>Bad</button>
-                </ButtonBlock>
-                <h3>Statistics</h3>
-                  <Statistics
-                  good = { good }
-                  neutral ={ neutral }
-                  bad = { bad }
-                  total={ total }
-                  persent = { persent }
-                                    
-                 />
+               
+                <Section title={"Please leave feedback"}>
+                    <FeedbackOptions handle={handle} option={option}/>
+                </Section>
+                    
+                {total !==0 ?
+                <Section title="Statistics">
+                            <Statistics
+                            good = { good }
+                            neutral ={ neutral }
+                            bad = { bad }
+                            total={ total }
+                            positivePercentage = { persent }
+                            />
+                </Section> 
+                    : 
+                <Notification message={"There is no feedback"}></Notification>    
+                    }           
                 
             </StatisticsComp>
             
