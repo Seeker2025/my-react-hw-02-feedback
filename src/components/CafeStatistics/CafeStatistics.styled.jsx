@@ -17,7 +17,7 @@ import styled from "styled-components";
 export const StatisticsComp = styled.div`
   
    border: 1px solid black;
-   width: 500px;
+   width: 400px;
    padding: 5px 15px;
 
    p{

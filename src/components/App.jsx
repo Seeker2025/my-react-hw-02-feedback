@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { CafeStatistics } from "./CafeStatistics/CafeStatistics";
+import { Phonebook } from './Phonebook/Phonebook';
 
 
 
@@ -51,6 +52,8 @@ export class App extends Component {
                     option={this.keys}
                     
                   />
+
+                  <Phonebook/>
         </>
   )}
 };
