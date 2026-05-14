@@ -7,3 +7,9 @@ export const PhonebookItem = styled.div `
     background-color: #ff5353;
 `;
 
+export const ContactBlock = styled.ul `
+    width: 250px;
+    height: 100px;
+    background-color: #735353;
+`;
+
