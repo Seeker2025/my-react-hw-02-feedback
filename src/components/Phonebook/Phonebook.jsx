@@ -25,15 +25,27 @@ export class Phonebook extends React.Component{
     );
 }     
 
-    
+    toDelete = id => {
+    this.setState(prevState => ({
+        contacts: prevState.contacts.filter(
+            itm => itm.id !== id
+        )
+    }));
+}
 
     handleChange = e =>{
         const { name, value  } = e.currentTarget;
+        const flag = this.state.contacts.some(itm=>itm.name===value);
+        if(flag){
+            alert(`${value} is already in contacts.`);
+            return
+        } 
         this.setState({ [name]: value });
     };
 
      handleSubmit = e =>{
         e.preventDefault();
+
 
          const newContact = {
             id: nanoid(),
@@ -52,13 +64,10 @@ export class Phonebook extends React.Component{
             console.log(this.state.filter);
         }
     );
-        
-
-        
     };
 
     render(){
-        const filteredContacts = this.toFilter();
+        const filteredCont = this.toFilter();
         return(
             <PhonebookItem>
                 <Section title={"Phonebook"}></Section>
@@ -93,11 +102,17 @@ export class Phonebook extends React.Component{
 
                 <h2>Contacts</h2>
                 <ContactBlock>
-                {filteredContacts.map(itm=>{
+                {filteredCont.map(itm=>{
 
                     return (
                             <li key={itm.id}>
                                 <p>{itm.name}: {itm.number}</p>
+    <button 
+    type="button"
+    onClick={() => this.toDelete(itm.id)}
+    >
+    Delete
+    </button>  
                             </li>)
                 })}
 
