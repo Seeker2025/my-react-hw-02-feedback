@@ -1,15 +1,18 @@
 import  React  from 'react';
-import { Section } from 'components/Section/Section';
-import { PhonebookItem, ContactBlock } from './Phonebook.styled';
+import { Section        } from 'components/Section/Section';
+import { PhonebookItem  } from './Phonebook.styled';
+import { FormSub        } from 'components/AddContact/AddContact';
+import { FindForm       } from 'components/FindContact/FindContact';
+import { ContactBl      } from 'components/ContactBlock/ContactBlock';
 
-import { nanoid } from "nanoid";
+import { nanoid         } from "nanoid";
 
 export class Phonebook extends React.Component{
     state = {
     contacts: [
-        {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
+        {id: 'id-1', name: 'Rosie Simpson',  number: '459-12-56'},
         {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
-        {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+        {id: 'id-3', name: 'Eden Clements',  number: '645-17-79'},
         {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
             ],
     filter: '',
@@ -70,9 +73,18 @@ export class Phonebook extends React.Component{
         const filteredCont = this.toFilter();
         return(
             <PhonebookItem>
-                <Section title={"Phonebook"}></Section>
+                <Section title={"Phonebook"}>
 
-                <form onSubmit ={this.handleSubmit}>
+                        <FormSub 
+                        onSubmit={this.handleSubmit}
+                        handle={this.handleChange}
+                        valName={this.state.name}
+                        valNumb={this.state.number}
+                        />
+
+                </Section>
+
+                {/* <form onSubmit ={this.handleSubmit}>
                     <h3>Name</h3>
                      <input 
                         type="text" name="name"
@@ -90,18 +102,35 @@ export class Phonebook extends React.Component{
                      />
 
                 <button type="submit">Add Contact</button>     
-                </form>
-                <h2>Find contacts by name </h2>
+                </form> */}
+                {/* <h2>Find contacts by name </h2>
                     <input 
                         type="text"
                         name="filter"
                         onChange={this.handleChange}
                         value={this.state.filter}
                         
-                     />
+                     /> */}
+                <Section title={"Find contacts by name"}
+                >   
+                    <FindForm
+                    handle={this.handleChange}
+                    valFiltr={this.state.filter}
+                    /> 
 
-                <h2>Contacts</h2>
-                <ContactBlock>
+                </Section>      
+
+               
+
+                 <Section title={"Contacts"}>
+
+                        <ContactBl 
+                        filtered={filteredCont}
+                        toDelete ={this.toDelete}
+                        />
+
+                 </Section>  
+                {/* <ContactBlock>
                 {filteredCont.map(itm=>{
 
                     return (
@@ -116,7 +145,7 @@ export class Phonebook extends React.Component{
                             </li>)
                 })}
 
-                </ContactBlock>
+                </ContactBlock> */}
 
                
 
