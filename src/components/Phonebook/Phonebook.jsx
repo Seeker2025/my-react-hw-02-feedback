@@ -37,9 +37,15 @@ export class Phonebook extends React.Component{
 }
 
     handleChange = e =>{
-        const { name, value  } = e.currentTarget;
+        const { name, value, filter  } = e.currentTarget;
+        console.log(name);
+        // console.log(value);
+        // console.log(name==='filter');
+        // console.log(typeof(filter));
+        // console.log('filter', filter);
+        
         const flag = this.state.contacts.some(itm=>itm.name===value);
-        if(flag){
+        if(flag && name!=='filter'){
             alert(`${value} is already in contacts.`);
             return
         } 
@@ -120,16 +126,14 @@ export class Phonebook extends React.Component{
 
                 </Section>      
 
-               
-
-                 <Section title={"Contacts"}>
+                <Section title={"Contacts"}>
 
                         <ContactBl 
                         filtered={filteredCont}
                         toDelete ={this.toDelete}
                         />
 
-                 </Section>  
+                </Section>  
                 {/* <ContactBlock>
                 {filteredCont.map(itm=>{
 
@@ -146,8 +150,6 @@ export class Phonebook extends React.Component{
                 })}
 
                 </ContactBlock> */}
-
-               
 
             </PhonebookItem>
              
