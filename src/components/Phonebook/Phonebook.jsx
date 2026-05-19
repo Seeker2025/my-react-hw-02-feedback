@@ -37,7 +37,7 @@ export class Phonebook extends React.Component{
 }
 
     handleChange = e =>{
-        const { name, value, filter  } = e.currentTarget;
+        const { name, value } = e.currentTarget;
         console.log(name);
         // console.log(value);
         // console.log(name==='filter');
